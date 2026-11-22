@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+data/ca/
+*.h5
+*.npz
+
+# Colab output folders
+outputs/
+outputs_skip/
+
+__pycache__/
+.ipynb_checkpoints/
