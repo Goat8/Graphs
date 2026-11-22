@@ -1,0 +1,85 @@
+============================================================
+Q6(a) Forecasting comparison (test period April-December 2021)
+============================================================
+| Model | Adjacency | MAE | RMSE | Training time (s) |
+|---|---|---|---|---|
+| Temporal-only | None | 62.64 | 98.92 | 195.1 |
+| STGNN | Fixed | 101.529 | 155.129 | 208.6 |
+| STGNN | Adaptive | 82.427 | 129.85 | 208.8 |
+| STGNN | Hybrid | 79.728 | 124.453 | 209.0 |
+
+Validation metrics (January-March 2021):
+        Model Adjacency  Val MAE  Val RMSE
+Temporal-only      None   54.232    87.773
+        STGNN     Fixed   88.271   141.346
+        STGNN  Adaptive   66.160   110.217
+        STGNN    Hybrid   64.975   106.913
+
+Lowest test MAE: Temporal-only / None
+  Temporal-only / None: test MAE change vs temporal-only = 0.0%
+  STGNN / Fixed: test MAE change vs temporal-only = 62.08%
+  STGNN / Adaptive: test MAE change vs temporal-only = 31.59%
+  STGNN / Hybrid: test MAE change vs temporal-only = 27.28%
+Saved q6a_validation_curves.png
+Saved q6a_pred_vs_actual_temporal.png
+Saved q6a_pred_vs_actual_fixed.png
+Saved q6a_pred_vs_actual_adaptive.png
+Saved q6a_pred_vs_actual_hybrid.png
+
+============================================================
+Q6(b) Learned graph versus road graph
+============================================================
+Road graph: 17319 edges without self-loops, density 0.0338
+Mean distance between all sensor pairs: 27.09 km
+Mean distance of road-graph edges: 2.28 km
+Median distance of road-graph edges: 2.37 km
+
+--- Learned adaptive matrix from the adaptive model ---
+Mean self weight (diagonal): 0.0477   (a uniform row would give 0.0014)
+Effective neighbours per row (exp of entropy): mean 11.0 of 716
+Largest weight in a row: mean 0.3806
+1. Top-10 learned edges that are also road-graph edges: 5.96%
+   Chance level (road-graph density): 3.38%
+2. Mean distance of top-10 learned edges: 24.43 km
+   Median distance of top-10 learned edges: 20.1 km
+   Share of top learned edges within 5 km: 9.57%
+   Share of all sensor pairs within 5 km: 5.9%
+3. Top learned edges absent from the road graph: 6733 of 7160 (94.04%)
+   Mean distance of these absent edges: 25.84 km
+   Ten strongest learned edges that are not in the road graph:
+     1118365 (I5-S S) -> 1119736 (I15-N N), weight 0.9973, distance 61.9 km
+     1116165 (I8-W W) -> 1108661 (I5-S S), weight 0.9776, distance 44.1 km
+     1113641 (SR78-W W) -> 1111545 (I805-S S), weight 0.9111, distance 46.4 km
+     1118695 (I5-S S) -> 1117979 (I805-S S), weight 0.9092, distance 10.2 km
+     1126722 (I15-N N) -> 1126812 (I15-N N), weight 0.9069, distance 21.8 km
+     1108380 (SR94-E E) -> 1108505 (SR94-E E), weight 0.8891, distance 6.1 km
+     1121783 (SR52-W W) -> 1113460 (I805-N N), weight 0.8717, distance 8.3 km
+     1123081 (I805-N N) -> 1118529 (I5-S S), weight 0.8543, distance 9.8 km
+     1116594 (I8-E E) -> 1126553 (I805-N N), weight 0.834, distance 20.9 km
+     1108287 (SR94-W W) -> 1108572 (I805-N N), weight 0.8073, distance 8.3 km
+
+--- Learned adaptive matrix from the hybrid model ---
+Mean self weight (diagonal): 0.0339   (a uniform row would give 0.0014)
+Effective neighbours per row (exp of entropy): mean 9.5 of 716
+Largest weight in a row: mean 0.4125
+1. Top-10 learned edges that are also road-graph edges: 3.81%
+   Chance level (road-graph density): 3.38%
+2. Mean distance of top-10 learned edges: 26.76 km
+   Median distance of top-10 learned edges: 22.54 km
+   Share of top learned edges within 5 km: 6.84%
+   Share of all sensor pairs within 5 km: 5.9%
+3. Top learned edges absent from the road graph: 6887 of 7160 (96.19%)
+   Mean distance of these absent edges: 27.73 km
+   Ten strongest learned edges that are not in the road graph:
+     1108323 (SR125-S S) -> 1114190 (I5-N N), weight 0.9999, distance 14.0 km
+     1111553 (I805-N N) -> 1126553 (I805-N N), weight 0.9994, distance 18.0 km
+     1115937 (I805-S S) -> 1108398 (I805-S S), weight 0.9984, distance 5.0 km
+     1121288 (I805-N N) -> 1115929 (I805-S S), weight 0.9979, distance 2.6 km
+     1111546 (I805-S S) -> 1115929 (I805-S S), weight 0.9955, distance 10.4 km
+     1123081 (I805-N N) -> 1118529 (I5-S S), weight 0.9951, distance 9.8 km
+     1108743 (SR56-W W) -> 1113460 (I805-N N), weight 0.995, distance 19.2 km
+     1126864 (I5-N N) -> 1115929 (I805-S S), weight 0.9949, distance 10.5 km
+     1108378 (SR94-E E) -> 1125737 (SR56-E E), weight 0.9947, distance 27.1 km
+     1118326 (I5-S S) -> 1115929 (I805-S S), weight 0.9943, distance 27.8 km
+
+Saved q6b_learned_adjacency.png

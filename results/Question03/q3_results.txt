@@ -1,0 +1,95 @@
+============================================================
+a) daata extraction and resampling
+============================================================
+Metadata columns: ID, Lat, Lng, District, County, Fwy, Lanes, Type, Direction, ID2
+Sensors in California: 8600
+Sensors in San Diego county: 716
+ca_his_raw_2020.h5 shape (time, sensors): (105408, 716)
+ca_his_raw_2021.h5 shape (time, sensors): (105120, 716)
+5-minute timestamps expected: 210528
+5-minute timestamps missing from the files: 0
+Missing 5-minute values: 7636666 of 150738048 (5.066%)
+Aggregation used: sum  -> units: vehicles per 15 minutes
+15-minute data shape (T, N): (70176, 716)
+First timestamp: 2020-01-01 00:00:00
+Last timestamp:  2021-12-31 23:45:00
+Missing 15-minute values: 2542017 of 50246016 (5.059%)
+Sensors with no missing values: 0
+Sensors with more than 10% missing: 45
+Sensors with more than 50% missing: 43
+Worst sensor missing percentage: 100.0%
+Exact zero readings (before filling): 69651
+Missing values after filling: 0
+Flow statistics after filling: min=0.0, mean=623.37, max=2997.0
+Rows in the plotted week: 672
+Sensors plotted: 1114091, 1115794, 1122412
+Saved q3a_three_sensors_week.png
+
+============================================================
+Q3(b) Traffic graph
+============================================================
+california adjacency shape: (8600, 8600)
+Flow columns and adjacency rows use the same sensor order: True
+Number of nodes: 716
+Nonzero entries (including diagonal): 18035
+Nonzero diagonal entries (self-loops): 716
+Nonzero edges without self-loops: 17319
+Density: 0.03518
+Edge weight range: min nonzero=0.01, max=1.0
+Negative entries: 0
+Weights symmetric (A == A.T): False
+Nonzero pattern symmetric: False
+Edges that exist in one direction only: 3711
+Largest |A_ij - A_ji|: 1.0
+Saved q3b_adjacency_heatmap.png
+Neighbours per sensor (row count): min=0, median=20.0, mean=24.19, max=70
+Neighbours per sensor (column count): min=0, mean=24.19, max=68
+Sensors with zero neighbours: 8
+Saved q3b_neighbour_distribution.png
+
+============================================================
+Q3(c) One-hop and two-hop neighbourhoods
+============================================================
+Chosen sensor index: 33
+
+============================================================
+Q3(b) Traffic graph
+============================================================
+california adjacency shape: (8600, 8600)
+Flow columns and adjacency rows use the same sensor order: True
+Number of nodes: 716
+Nonzero entries (including diagonal): 18035
+Nonzero diagonal entries (self-loops): 716
+Nonzero edges without self-loops: 17319
+Density: 0.03518
+Edge weight range: min nonzero=0.01, max=1.0
+Negative entries: 0
+Weights symmetric (A == A.T): False
+Nonzero pattern symmetric: False
+Edges that exist in one direction only: 3711
+Largest |A_ij - A_ji|: 1.0
+Saved q3b_adjacency_heatmap.png
+Neighbours per sensor (row count): min=0, median=20.0, mean=24.19, max=70
+Neighbours per sensor (column count): min=0, mean=24.19, max=68
+Sensors with zero neighbours: 8
+Saved q3b_neighbour_distribution.png
+
+============================================================
+Q3(c) One-hop and two-hop neighbourhoods
+============================================================
+Chosen sensor index: 33
+
+============================================================
+Q3(c) One-hop and two-hop neighbourhoods
+============================================================
+Chosen sensor index: 33
+Chosen sensor ID: 1126411, freeway I5-N N, lanes 4, lat 32.770668, lng -117.206677
+One-hop neighbours: 20
+Two-hop neighbours (at most two edges): 73
+Sensors reached only at the second hop: 53
+One-hop neighbour IDs: 1114805, 1114035, 1108547, 1118707, 1117871, 1108615, 1117818, 1126426, 1114806, 1108711, 1108693, 1111514, 1113486, 1115356, 1115413, 1115432, 1115438, 1116574, 1115528, 1115517
+First 20 second-hop-only IDs: 1117748, 1113976, 1117741, 1108603, 1117835, 1117717, 1118078, 1108611, 1108613, 1114050, 1108617, 1118496, 1118521, 1108665, 1117683, 1108417, 1117734, 1108605, 1118702, 1108609
+Freeways among one-hop neighbours: I5-N, I5-S, I8-E, I8-W
+Freeways among two-hop neighbours: I5-N, I5-S, I8-E, I8-W, I805-N, I805-S, SR163-N, SR163-S
+
+Saved sd_dataset.npz and sd_meta.csv

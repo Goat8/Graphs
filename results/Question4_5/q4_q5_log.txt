@@ -1,0 +1,115 @@
+============================================================
+Q4(a) Windows, splits, normalisation
+============================================================
+Data shape (T, N): (70176, 716)
+Train period: 2020-01-01 00:00:00 to 2020-12-31 23:45:00
+Val period:   2021-01-01 00:00:00 to 2021-03-31 23:45:00
+Test period:  2021-04-01 00:00:00 to 2021-12-31 23:45:00
+Windows -> train: 35125, val: 8629, test: 26389
+Per-sensor training mean: min 0.0, average 584.52, max 1360.66
+Per-sensor training std:  min 1.0, average 382.46, max 848.43
+
+Q5(a) Fixed adjacency normalisation
+------------------------------------------------------------
+The road graph is NOT symmetric. Using row normalisation D^-1 (A+I).
+
+============================================================
+Training configuration
+============================================================
+Seed: 42
+History: 8, horizon: 4
+Hidden size: 32, node embedding size: 10
+Batch size: 64, epochs: 10, learning rate: 0.001
+Optimizer: Adam, loss: MAE on normalised flow
+Hybrid alpha: 0.5, train stride: 1, skip connection: False
+Normalisation: per-sensor z-score with 2020 statistics
+Device: cuda
+Machine: Linux-6.6.159+-x86_64-with-glibc2.39
+Processor: x86_64, CPU cores: 2
+PyTorch: 2.14.1+cu130, NumPy: 2.4.6
+GPU: Tesla T4
+
+------------------------------------------------------------
+Training model: temporal
+------------------------------------------------------------
+Trainable parameters: 11588
+epoch 1  train loss 0.1903  val MAE 57.096  val RMSE 91.528
+epoch 2  train loss 0.1475  val MAE 56.136  val RMSE 90.164
+epoch 3  train loss 0.1457  val MAE 55.608  val RMSE 89.901
+epoch 4  train loss 0.1449  val MAE 55.307  val RMSE 89.167
+epoch 5  train loss 0.1438  val MAE 54.858  val RMSE 88.472
+epoch 6  train loss 0.1433  val MAE 56.075  val RMSE 90.565
+epoch 7  train loss 0.1429  val MAE 54.594  val RMSE 88.292
+epoch 8  train loss 0.1426  val MAE 54.814  val RMSE 88.217
+epoch 9  train loss 0.1421  val MAE 54.465  val RMSE 87.596
+epoch 10  train loss 0.1422  val MAE 54.232  val RMSE 87.773
+Best model -> val MAE 54.232, val RMSE 87.773
+Best model -> TEST MAE 62.64, TEST RMSE 98.92
+Test MAE per horizon step (15, 30, 45, 60 min): 44.328, 57.27, 68.953, 80.008
+Training time: 195.1 seconds
+
+------------------------------------------------------------
+Training model: fixed
+------------------------------------------------------------
+Trainable parameters: 12612
+epoch 1  train loss 0.2805  val MAE 93.719  val RMSE 147.645
+epoch 2  train loss 0.2339  val MAE 93.282  val RMSE 146.445
+epoch 3  train loss 0.2315  val MAE 91.424  val RMSE 144.527
+epoch 4  train loss 0.2304  val MAE 91.218  val RMSE 144.479
+epoch 5  train loss 0.2295  val MAE 90.778  val RMSE 144.176
+epoch 6  train loss 0.2288  val MAE 90.451  val RMSE 143.639
+epoch 7  train loss 0.2286  val MAE 90.64  val RMSE 144.068
+epoch 8  train loss 0.2278  val MAE 89.868  val RMSE 142.977
+epoch 9  train loss 0.2272  val MAE 89.211  val RMSE 142.34
+epoch 10  train loss 0.2261  val MAE 88.271  val RMSE 141.346
+Best model -> val MAE 88.271, val RMSE 141.346
+Best model -> TEST MAE 101.529, TEST RMSE 155.129
+Test MAE per horizon step (15, 30, 45, 60 min): 93.848, 98.524, 104.183, 109.561
+Training time: 208.6 seconds
+
+------------------------------------------------------------
+Training model: adaptive
+------------------------------------------------------------
+Trainable parameters: 26932
+epoch 1  train loss 0.2846  val MAE 85.452  val RMSE 136.347
+epoch 2  train loss 0.2041  val MAE 77.305  val RMSE 127.172
+epoch 3  train loss 0.1895  val MAE 73.078  val RMSE 119.582
+epoch 4  train loss 0.1817  val MAE 71.095  val RMSE 116.399
+epoch 5  train loss 0.1772  val MAE 69.394  val RMSE 114.562
+epoch 6  train loss 0.1732  val MAE 68.964  val RMSE 113.839
+epoch 7  train loss 0.1705  val MAE 68.228  val RMSE 113.524
+epoch 8  train loss 0.1684  val MAE 68.126  val RMSE 112.173
+epoch 9  train loss 0.1667  val MAE 66.668  val RMSE 110.806
+epoch 10  train loss 0.1651  val MAE 66.16  val RMSE 110.217
+Best model -> val MAE 66.16, val RMSE 110.217
+Best model -> TEST MAE 82.427, TEST RMSE 129.85
+Test MAE per horizon step (15, 30, 45, 60 min): 74.8, 79.727, 84.867, 90.314
+Training time: 208.8 seconds
+
+------------------------------------------------------------
+Training model: hybrid
+------------------------------------------------------------
+Trainable parameters: 26932
+epoch 1  train loss 0.2634  val MAE 81.593  val RMSE 130.158
+epoch 2  train loss 0.1972  val MAE 76.25  val RMSE 123.227
+epoch 3  train loss 0.1881  val MAE 73.083  val RMSE 118.936
+epoch 4  train loss 0.1818  val MAE 70.896  val RMSE 115.4
+epoch 5  train loss 0.1772  val MAE 69.174  val RMSE 113.16
+epoch 6  train loss 0.1731  val MAE 68.207  val RMSE 111.874
+epoch 7  train loss 0.1708  val MAE 67.124  val RMSE 110.287
+epoch 8  train loss 0.1687  val MAE 66.496  val RMSE 108.575
+epoch 9  train loss 0.1673  val MAE 65.34  val RMSE 107.688
+epoch 10  train loss 0.1659  val MAE 64.975  val RMSE 106.913
+Best model -> val MAE 64.975, val RMSE 106.913
+Best model -> TEST MAE 79.728, TEST RMSE 124.453
+Test MAE per horizon step (15, 30, 45, 60 min): 71.806, 76.681, 82.428, 87.997
+Training time: 209.0 seconds
+
+============================================================
+Final comparison (test period April-December 2021)
+============================================================
+        Model Adjacency  Val MAE  Val RMSE  Test MAE  Test RMSE  Training time (s)  Parameters
+Temporal-only      None   54.232    87.773    62.640     98.920              195.1       11588
+        STGNN     Fixed   88.271   141.346   101.529    155.129              208.6       12612
+        STGNN  Adaptive   66.160   110.217    82.427    129.850              208.8       26932
+        STGNN    Hybrid   64.975   106.913    79.728    124.453              209.0       26932
