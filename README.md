@@ -1,4 +1,4 @@
-# AI651 Assignment 3 — Deep Learning for Space, Time and Graphs
+# Graph Neural Networks for Spatio-Temporal Traffic Forecasting
 
 This repository contains the code and results for Programming Assignment 3.
 
@@ -34,7 +34,7 @@ Google Colab already provides all of these except `kagglehub`, which the Q3 note
 
 Run the steps in this order.
 
-### Step 1 — Questions 1 and 2 (local)
+### Step 1: Questions 1 and 2 (local)
 
 ```bash
 python "src/Question1(b).py"
@@ -44,7 +44,7 @@ python src/Question2.py
 The first script prints a confirmation that all 164 neighbourhoods are decoded correctly.
 The second script prints the fitted coefficients and saves `q2_heatmaps.png`.
 
-### Step 2 — Question 3 (Colab)
+### Step 2: Question 3 (Colab)
 
 1. Open `src/Question03.ipynb` in Google Colab.
 2. Run all cells.
@@ -58,7 +58,7 @@ The second script prints the fitted coefficients and saves `q2_heatmaps.png`.
 `LOW_MEMORY = True` reads the large California files in blocks.
 This lets the notebook run within Colab's memory limit.
 
-### Step 3 — Make the dataset available to Questions 4 to 6
+### Step 3: Make the dataset available to Questions 4 to 6
 
 The training notebooks read the dataset from Google Drive at:
 
@@ -73,7 +73,7 @@ Use one of these options:
   https://drive.google.com/drive/folders/1ACHwvzYFSsmwTVkHzL23V9MXdFsGgZJf?usp=sharing
   Add a shortcut to it in "My Drive" and name the shortcut `PA3`.
 
-### Step 4 — Questions 4, 5 and 6 (Colab, GPU)
+### Step 4: Questions 4, 5 and 6 (Colab, GPU)
 
 1. Open `src/Question_4_5_6.ipynb` in Google Colab.
 2. Select a GPU runtime: Runtime → Change runtime type → T4 GPU.
@@ -94,7 +94,7 @@ The training cell trains four models in sequence:
 All outputs are written to `outputs/`.
 The whole notebook takes about 15 minutes on a T4 GPU.
 
-### Step 5 — Residual-connection experiment (optional)
+### Step 5: Residual-connection experiment (optional)
 
 1. Open `src/SKIP_CONNECTION_EXPERIMENT_Models_4_5_6.ipynb` in a fresh Colab runtime.
 2. Repeat steps 2 to 4 of Step 4.
